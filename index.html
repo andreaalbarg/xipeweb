@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Xipe – Build software that moves at the speed of AI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue: #4f6ef7;
+      --blue-light: #6b84ff;
+      --blue-dim: #3a56e8;
+      --white: #ffffff;
+      --gray: #9ca3af;
+      --dark-bg: #0a0c14;
+      --card-bg: rgba(255,255,255,0.05);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--dark-bg);
+      color: var(--white);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 64px;
+      background: rgba(10,12,20,0.7);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 18px;
+      letter-spacing: -0.3px;
+    }
+
+    .nav-logo svg {
+      width: 32px;
+      height: 32px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+    }
+
+    .nav-links a {
+      font-size: 15px;
+      color: rgba(255,255,255,0.85);
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--white); }
+
+    .btn-primary {
+      background: var(--blue);
+      color: var(--white);
+      border: none;
+      border-radius: 8px;
+      padding: 10px 22px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      font-family: inherit;
+    }
+
+    .btn-primary:hover {
+      background: var(--blue-light);
+      transform: translateY(-1px);
+    }
+
+    /* ─── HERO ─── */
+    #hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 140px 64px 100px;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 40%, #0d1a3a 0%, #060810 70%);
+      z-index: 0;
+    }
+
+    /* Stars layer */
+    .stars {
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(1px 1px at 10% 15%, rgba(255,255,255,0.6) 0%, transparent 100%),
+        radial-gradient(1px 1px at 25% 30%, rgba(255,255,255,0.4) 0%, transparent 100%),
+        radial-gradient(1px 1px at 40% 10%, rgba(255,255,255,0.5) 0%, transparent 100%),
+        radial-gradient(1px 1px at 55% 22%, rgba(255,255,255,0.35) 0%, transparent 100%),
+        radial-gradient(1px 1px at 70% 8%, rgba(255,255,255,0.5) 0%, transparent 100%),
+        radial-gradient(1px 1px at 82% 18%, rgba(255,255,255,0.4) 0%, transparent 100%),
+        radial-gradient(1px 1px at 92% 35%, rgba(255,255,255,0.3) 0%, transparent 100%),
+        radial-gradient(1.5px 1.5px at 15% 55%, rgba(255,255,255,0.25) 0%, transparent 100%),
+        radial-gradient(1px 1px at 30% 70%, rgba(255,255,255,0.3) 0%, transparent 100%),
+        radial-gradient(1px 1px at 48% 65%, rgba(255,255,255,0.2) 0%, transparent 100%),
+        radial-gradient(1px 1px at 62% 80%, rgba(255,255,255,0.25) 0%, transparent 100%),
+        radial-gradient(1px 1px at 78% 60%, rgba(255,255,255,0.3) 0%, transparent 100%),
+        radial-gradient(1px 1px at 88% 75%, rgba(255,255,255,0.2) 0%, transparent 100%),
+        radial-gradient(1px 1px at 5% 85%, rgba(255,255,255,0.25) 0%, transparent 100%),
+        radial-gradient(2px 2px at 20% 90%, rgba(255,255,255,0.15) 0%, transparent 100%),
+        radial-gradient(1px 1px at 35% 95%, rgba(255,255,255,0.2) 0%, transparent 100%),
+        radial-gradient(1px 1px at 58% 48%, rgba(255,255,255,0.15) 0%, transparent 100%),
+        radial-gradient(1px 1px at 72% 42%, rgba(255,255,255,0.2) 0%, transparent 100%),
+        radial-gradient(1px 1px at 95% 55%, rgba(255,255,255,0.18) 0%, transparent 100%),
+        radial-gradient(1px 1px at 3% 40%, rgba(255,255,255,0.22) 0%, transparent 100%);
+      z-index: 0;
+    }
+
+    /* Milky way glow */
+    .milky-way {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 120% 40% at 60% 60%, rgba(30,60,130,0.3) 0%, transparent 60%),
+                  radial-gradient(ellipse 80% 30% at 70% 70%, rgba(20,40,100,0.2) 0%, transparent 50%);
+      z-index: 0;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 700px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(79,110,247,0.15);
+      border: 1px solid rgba(79,110,247,0.35);
+      border-radius: 100px;
+      padding: 6px 16px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1.2px;
+      color: var(--blue-light);
+      text-transform: uppercase;
+      margin-bottom: 32px;
+    }
+
+    .hero-badge::before {
+      content: '•';
+      font-size: 16px;
+    }
+
+    .hero-title {
+      font-size: clamp(52px, 7vw, 80px);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -2px;
+      margin-bottom: 28px;
+    }
+
+    .hero-title em {
+      font-style: italic;
+      color: var(--blue-light);
+    }
+
+    .hero-subtitle {
+      font-size: 17px;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.7;
+      max-width: 520px;
+      margin-bottom: 44px;
+    }
+
+    .btn-hero {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--blue);
+      color: var(--white);
+      border-radius: 10px;
+      padding: 14px 28px;
+      font-size: 16px;
+      font-weight: 700;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .btn-hero:hover {
+      background: var(--blue-light);
+      transform: translateY(-2px);
+    }
+
+    /* ─── HOW WE WORK ─── */
+    #how-we-work {
+      background: #080a10;
+      padding: 120px 64px;
+      text-align: center;
+    }
+
+    .section-label {
+      display: block;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--blue-light);
+      margin-bottom: 28px;
+    }
+
+    .section-title {
+      font-size: clamp(36px, 5vw, 58px);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -1.5px;
+      margin-bottom: 24px;
+      max-width: 780px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .section-title em {
+      font-style: italic;
+      color: var(--blue-light);
+    }
+
+    .section-body {
+      font-size: 17px;
+      color: rgba(255,255,255,0.55);
+      max-width: 600px;
+      margin: 0 auto 32px;
+      line-height: 1.75;
+    }
+
+    .section-body strong {
+      color: var(--blue-light);
+      font-weight: 700;
+    }
+
+    .link-arrow {
+      font-size: 15px;
+      color: var(--blue-light);
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: gap 0.2s;
+    }
+
+    .link-arrow:hover { gap: 8px; }
+
+    /* ─── AI NATIVE ─── */
+    #ai-native {
+      background: #ffffff;
+      padding: 120px 64px;
+    }
+
+    #ai-native .inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      max-width: 1200px;
+      margin: 0 auto;
+      align-items: center;
+    }
+
+    .ai-native-left .title {
+      font-size: clamp(32px, 4vw, 50px);
+      font-weight: 800;
+      color: #0a0c14;
+      line-height: 1.1;
+      letter-spacing: -1.5px;
+      margin-bottom: 24px;
+    }
+
+    .ai-native-left .body {
+      font-size: 16px;
+      color: #6b7280;
+      line-height: 1.7;
+    }
+
+    .approach-label {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 28px;
+      display: block;
+    }
+
+    .approach-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .approach-item {
+      display: flex;
+      gap: 16px;
+      padding: 24px 0;
+      border-top: 1px solid #e5e7eb;
+    }
+
+    .approach-item:last-child { border-bottom: 1px solid #e5e7eb; }
+
+    .approach-icon {
+      font-size: 18px;
+      margin-top: 2px;
+      min-width: 24px;
+      color: #111827;
+    }
+
+    .approach-item h3 {
+      font-size: 15px;
+      font-weight: 700;
+      color: #111827;
+      margin-bottom: 6px;
+    }
+
+    .approach-item p {
+      font-size: 14px;
+      color: #6b7280;
+      line-height: 1.65;
+    }
+
+    /* ─── SERVICES ─── */
+    #services {
+      position: relative;
+      padding: 120px 64px;
+      overflow: hidden;
+    }
+
+    .services-bg {
+      position: absolute;
+      inset: 0;
+      background: #0c1428;
+      z-index: 0;
+    }
+
+    /* Circuit/tech pattern overlay */
+    .services-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(79,110,247,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(79,110,247,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, black 30%, transparent 80%);
+    }
+
+    /* Glowing particles */
+    .services-bg::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(3px 3px at 15% 25%, rgba(79,110,247,0.6) 0%, transparent 100%),
+        radial-gradient(2px 2px at 30% 15%, rgba(79,110,247,0.4) 0%, transparent 100%),
+        radial-gradient(3px 3px at 65% 20%, rgba(79,110,247,0.5) 0%, transparent 100%),
+        radial-gradient(2px 2px at 80% 35%, rgba(79,110,247,0.4) 0%, transparent 100%),
+        radial-gradient(3px 3px at 90% 60%, rgba(100,140,255,0.35) 0%, transparent 100%),
+        radial-gradient(2px 2px at 10% 70%, rgba(79,110,247,0.3) 0%, transparent 100%),
+        radial-gradient(3px 3px at 45% 80%, rgba(79,110,247,0.4) 0%, transparent 100%),
+        radial-gradient(2px 2px at 75% 85%, rgba(79,110,247,0.35) 0%, transparent 100%),
+        radial-gradient(4px 4px at 50% 50%, rgba(79,110,247,0.25) 0%, transparent 100%),
+        radial-gradient(2px 2px at 20% 90%, rgba(79,110,247,0.3) 0%, transparent 100%),
+        radial-gradient(3px 3px at 88% 10%, rgba(79,110,247,0.4) 0%, transparent 100%),
+        radial-gradient(2px 2px at 55% 95%, rgba(79,110,247,0.25) 0%, transparent 100%);
+    }
+
+    #services .inner {
+      position: relative;
+      z-index: 1;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .services-header {
+      margin-bottom: 60px;
+    }
+
+    .services-title {
+      font-size: clamp(40px, 5.5vw, 64px);
+      font-weight: 800;
+      color: var(--white);
+      letter-spacing: -2px;
+      line-height: 1.05;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .service-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 20px;
+      padding: 40px;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .service-card:hover {
+      background: rgba(255,255,255,0.08);
+      transform: translateY(-3px);
+    }
+
+    .service-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.1);
+      border-radius: 100px;
+      padding: 5px 14px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 28px;
+    }
+
+    .service-card h3 {
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 1.3;
+      letter-spacing: -0.5px;
+      margin-bottom: 16px;
+      color: var(--white);
+    }
+
+    .service-card p {
+      font-size: 14px;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.7;
+      margin-bottom: 32px;
+    }
+
+    /* ─── STAFF AUG ─── */
+    #staff-aug {
+      background: #07080f;
+      padding: 140px 64px;
+      text-align: center;
+    }
+
+    .staff-label {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--blue-light);
+      margin-bottom: 28px;
+      display: block;
+    }
+
+    .staff-title {
+      font-size: clamp(40px, 6vw, 72px);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -2px;
+      margin-bottom: 24px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .staff-body {
+      font-size: 17px;
+      color: rgba(255,255,255,0.55);
+      max-width: 620px;
+      margin: 0 auto 44px;
+      line-height: 1.75;
+    }
+
+    .staff-body strong { color: var(--white); font-weight: 700; }
+
+    .btn-staff {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--blue);
+      color: var(--white);
+      border-radius: 10px;
+      padding: 16px 32px;
+      font-size: 16px;
+      font-weight: 700;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .btn-staff:hover {
+      background: var(--blue-light);
+      transform: translateY(-2px);
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      nav { padding: 16px 24px; }
+      #hero, #how-we-work, #ai-native, #services, #staff-aug { padding-left: 24px; padding-right: 24px; }
+
+      #ai-native .inner { grid-template-columns: 1fr; gap: 48px; }
+      .services-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+      .hero-title { font-size: 40px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">
+      <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="32" height="32" rx="7" fill="white"/>
+        <path d="M8 16L14 10L20 16L14 22L8 16Z" fill="#0a0c14" stroke="#0a0c14" stroke-width="0.5"/>
+        <path d="M16 16L22 10L26 14L20 20L16 16Z" fill="#4f6ef7" stroke="#4f6ef7" stroke-width="0.5"/>
+      </svg>
+      XIPE
+    </div>
+    <div class="nav-links">
+      <a href="#services">Software Development</a>
+      <a href="#how-we-work">Consulting</a>
+      <button class="btn-primary">Talk to Us</button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="stars"></div>
+    <div class="milky-way"></div>
+    <div class="hero-content">
+      <div class="hero-badge">AI Augmented Development</div>
+      <h1 class="hero-title">
+        Build software that<br/>
+        moves at the speed of<br/>
+        <em>AI.</em>
+      </h1>
+      <p class="hero-subtitle">
+        Xipe helps companies design, build, and ship production-ready software faster by embedding AI at the core of every engineering decision.
+      </p>
+      <a href="#services" class="btn-hero">Build with Us &rarr;</a>
+    </div>
+  </section>
+
+  <!-- HOW WE WORK -->
+  <section id="how-we-work">
+    <span class="section-label">How We Work</span>
+    <h2 class="section-title">
+      Engineering is no longer just about writing code. It's about <em>building smarter.</em>
+    </h2>
+    <p class="section-body">
+      At the center of every project is <strong>DIANA</strong>; a cutting-edge AI engine that accelerates how teams design, build, and ship software. Faster cycles. Higher quality. Less overhead.
+    </p>
+    <a href="#ai-native" class="link-arrow">See how we build &rarr;</a>
+  </section>
+
+  <!-- AI NATIVE -->
+  <section id="ai-native">
+    <div class="inner">
+      <div class="ai-native-left">
+        <h2 class="title">AI native engineering, from day one.</h2>
+        <p class="body">
+          Most teams add headcount to move faster. We build AI powered systems that multiply the output of every engineer on your team.
+        </p>
+      </div>
+      <div class="ai-native-right">
+        <span class="approach-label">Our Approach Combines:</span>
+        <div class="approach-list">
+          <div class="approach-item">
+            <span class="approach-icon">⚡</span>
+            <div>
+              <h3>AI augmented development</h3>
+              <p>Proprietary AI workflows that compress delivery cycles without compromising engineering quality.</p>
+            </div>
+          </div>
+          <div class="approach-item">
+            <span class="approach-icon">◎</span>
+            <div>
+              <h3>Product-driven thinking</h3>
+              <p>We tie every technical decision to a business outcome. No feature ships without a reason.</p>
+            </div>
+          </div>
+          <div class="approach-item">
+            <span class="approach-icon">↻</span>
+            <div>
+              <h3>Operational clarity</h3>
+              <p>Lean, transparent processes that eliminate friction and keep stakeholders aligned at every stage.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="services-bg"></div>
+    <div class="inner">
+      <div class="services-header">
+        <span class="section-label">Our Services</span>
+        <h2 class="services-title">What we do</h2>
+      </div>
+      <div class="services-grid">
+        <div class="service-card">
+          <span class="service-badge">Product Development</span>
+          <h3>Custom software, built through an AI driven delivery system.</h3>
+          <p>We design and build custom digital products that run your business. From early concept to production, we turn your vision into software delivered through an AI driven system built to grow with you.</p>
+          <a href="#" class="link-arrow">See how we build products &rarr;</a>
+        </div>
+        <div class="service-card">
+          <span class="service-badge">AI &amp; Technology Consulting</span>
+          <h3>Rethink how your team builds with AI at the center.</h3>
+          <p>We help engineering leaders adopt AI augmented workflows, modernize their architecture, and establish the practices that let teams ship with confidence, not just speed.</p>
+          <a href="#" class="link-arrow">Explore our approach &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STAFF AUGMENTATION -->
+  <section id="staff-aug">
+    <span class="staff-label">Staff Augmentation &middot; Mexico</span>
+    <h2 class="staff-title">Build your engineering team in Mexico.</h2>
+    <p class="staff-body">
+      Through our collaboration with <strong>Necodex</strong>, we source top-tier talent, design the right team structure, and embed AI-powered workflows so distributed teams deliver like a single high-performance unit.
+    </p>
+    <a href="#" class="btn-staff">Learn how it works &rarr;</a>
+  </section>
+
+</body>
+</html>
