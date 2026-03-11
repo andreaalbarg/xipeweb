@@ -59,15 +59,11 @@
     .nav-logo {
       display: flex;
       align-items: center;
-      gap: 10px;
-      font-weight: 700;
-      font-size: 18px;
-      letter-spacing: -0.3px;
     }
 
-    .nav-logo svg {
-      width: 32px;
+    .nav-logo img {
       height: 32px;
+      width: auto;
     }
 
     .nav-links {
@@ -129,7 +125,7 @@
       background-size: cover;
       background-position: center center;
       background-attachment: fixed;
-      opacity: 0.55;
+      opacity: 0.25;
       z-index: 0;
     }
 
@@ -1027,6 +1023,98 @@
       transform: translateY(-2px);
     }
 
+    /* ─── FOOTER ─── */
+    footer {
+      background: #02030a;
+      border-top: 1px solid rgba(255,255,255,0.07);
+      padding: 72px 64px 40px;
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr 1fr;
+      gap: 48px;
+      padding-bottom: 56px;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .footer-logo {
+      height: 36px;
+      width: auto;
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    .footer-tagline {
+      font-size: 14px;
+      color: rgba(255,255,255,0.4);
+      line-height: 1.7;
+      max-width: 260px;
+    }
+
+    .footer-col h4 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      margin-bottom: 20px;
+    }
+
+    .footer-col a {
+      display: block;
+      font-size: 14px;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 12px;
+      transition: color 0.2s;
+    }
+
+    .footer-col a:hover {
+      color: var(--white);
+    }
+
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 32px;
+    }
+
+    .footer-copy {
+      font-size: 13px;
+      color: rgba(255,255,255,0.3);
+    }
+
+    .footer-socials {
+      display: flex;
+      gap: 16px;
+    }
+
+    .footer-socials a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.5);
+      font-size: 16px;
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
+    }
+
+    .footer-socials a:hover {
+      border-color: rgba(107,132,255,0.5);
+      color: var(--blue-light);
+      background: rgba(79,110,247,0.08);
+    }
+
     /* ─── RESPONSIVE ─── */
     @media (max-width: 900px) {
       nav { padding: 16px 24px; }
@@ -1040,6 +1128,8 @@
       .team-grid { grid-template-columns: 1fr 1fr; }
       .testimonials-grid { grid-template-columns: 1fr; }
       .form-row { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
+      footer { padding: 56px 24px 32px; }
     }
 
     @media (max-width: 600px) {
@@ -1054,18 +1144,13 @@
 
   <!-- NAV -->
   <nav>
-    <div class="nav-logo">
-      <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect width="32" height="32" rx="7" fill="white"/>
-        <path d="M8 16L14 10L20 16L14 22L8 16Z" fill="#0a0c14" stroke="#0a0c14" stroke-width="0.5"/>
-        <path d="M16 16L22 10L26 14L20 20L16 16Z" fill="#4f6ef7" stroke="#4f6ef7" stroke-width="0.5"/>
-      </svg>
-      XIPE
-    </div>
+    <a href="index.html" class="nav-logo">
+      <img src="images/LogoXipe.png" alt="Xipe" />
+    </a>
     <div class="nav-links">
-      <a href="#services">Software Development</a>
+      <a href="software-development.html">Product Development</a>
       <a href="#how-we-work">Consulting</a>
-      <button class="btn-primary">Talk to Us</button>
+      <button class="btn-primary" onclick="window.location.href='#contact'">Talk to Us</button>
     </div>
   </nav>
 
@@ -1085,7 +1170,7 @@
       <p class="hero-subtitle">
         Xipe helps companies design, build, and ship production-ready software faster by embedding AI at the core of every engineering decision.
       </p>
-      <a href="#services" class="btn-hero">Build with Us &rarr;</a>
+      <a href="#services" class="btn-hero">Explore our services &rarr;</a>
     </div>
   </section>
 
@@ -1098,7 +1183,7 @@
     <p class="section-body">
       At the center of every project is <strong>DIANA</strong>; a cutting-edge AI engine that accelerates how teams design, build, and ship software. Faster cycles. Higher quality. Less overhead.
     </p>
-    <a href="#ai-native" class="btn-outline">See how we build &rarr;</a>
+    <a href="#contact" class="btn-outline">Build with us &rarr;</a>
   </section>
 
   <!-- AI NATIVE -->
@@ -1153,7 +1238,7 @@
           <span class="service-badge">Product Development</span>
           <h3>Custom software, built through an AI driven delivery system.</h3>
           <p>We design and build custom digital products that run your business. From early concept to production, we turn your vision into software delivered through an AI driven system built to grow with you.</p>
-          <a href="#" class="link-arrow">See how we build products &rarr;</a>
+          <a href="software-development.html" class="link-arrow">See how we build products &rarr;</a>
         </div>
         <div class="service-card">
           <span class="service-badge">AI &amp; Technology Consulting</span>
@@ -1172,7 +1257,7 @@
     <p class="staff-body">
       Through our collaboration with <strong>Necodex</strong>, we source top-tier talent, design the right team structure, and embed AI-powered workflows so distributed teams deliver like a single high-performance unit.
     </p>
-    <a href="#" class="btn-staff">Learn how it works &rarr;</a>
+    <a href="#contact" class="btn-staff">Tell us about your needs &rarr;</a>
   </section>
 
   <!-- TESTIMONIALS -->
@@ -1320,6 +1405,36 @@
       </form>
     </div>
   </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <img src="images/LogoXipe.png" alt="Xipe" class="footer-logo" />
+          <p class="footer-tagline">Build software that moves at the speed of AI.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <a href="#services">Product Development</a>
+          <a href="#services">AI & Technology Consulting</a>
+          <a href="#staff-aug">Staff Augmentation</a>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <a href="#contact">Get in Touch</a>
+          <a href="mailto:hola@xipetechnology.com">hola@xipetechnology.com</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">© 2025 Xipe. All rights reserved.</p>
+        <div class="footer-socials">
+          <a href="https://www.instagram.com/xipe" target="_blank" rel="noopener" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+          <a href="https://www.linkedin.com/company/xipe" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
 
 </body>
 </html>

@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Product Development – Xipe</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue: #4f6ef7;
+      --blue-light: #6b84ff;
+      --blue-dim: #3a56e8;
+      --white: #ffffff;
+      --gray: #9ca3af;
+      --dark-bg: #0a0c14;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--dark-bg);
+      color: var(--white);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a { text-decoration: none; color: inherit; }
+    h1, h2, h3 { font-family: 'Space Grotesk', sans-serif; }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 64px;
+      background: rgba(10,12,20,0.7);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .nav-logo { display: flex; align-items: center; }
+    .nav-logo img { height: 32px; width: auto; }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+    }
+
+    .nav-links a {
+      font-size: 15px;
+      color: rgba(255,255,255,0.85);
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--white); }
+    .nav-links a.active { color: var(--blue-light); }
+
+    .btn-primary {
+      background: var(--blue);
+      color: #0d1340;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 22px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      font-family: inherit;
+    }
+
+    .btn-primary:hover { background: var(--blue-light); transform: translateY(-1px); }
+
+    /* ─── HERO ─── */
+    #hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 140px 64px 100px 180px;
+      overflow: hidden;
+    }
+
+    .hero-bg { position: absolute; inset: 0; background: #060810; z-index: 0; }
+
+    .hero-photo {
+      position: absolute; inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1920&auto=format&fit=crop&q=80');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      opacity: 0.3;
+      z-index: 0;
+    }
+
+    .hero-photo::after {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(to right, rgba(6,8,16,0.9) 0%, rgba(6,8,16,0.4) 60%, rgba(6,8,16,0.1) 100%),
+        linear-gradient(to top, rgba(6,8,16,0.7) 0%, transparent 50%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      width: 60%;
+      max-width: 60%;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(79,110,247,0.15);
+      border: 1px solid rgba(79,110,247,0.35);
+      border-radius: 100px;
+      padding: 6px 16px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1.2px;
+      color: var(--blue-light);
+      text-transform: uppercase;
+      margin-bottom: 32px;
+    }
+    .hero-badge::before { content: '•'; font-size: 16px; }
+
+    .hero-title {
+      font-size: clamp(44px, 6vw, 72px);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -2px;
+      margin-bottom: 28px;
+    }
+
+    .hero-title em { font-style: italic; color: var(--blue-light); }
+
+    .hero-subtitle {
+      font-size: 17px;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.75;
+      margin-bottom: 16px;
+    }
+
+    .hero-subtitle-2 {
+      font-size: 16px;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.75;
+      margin-bottom: 44px;
+    }
+
+    .btn-hero {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--blue);
+      color: #0d1340;
+      border-radius: 10px;
+      padding: 14px 28px;
+      font-size: 16px;
+      font-weight: 700;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-hero:hover { background: var(--blue-light); transform: translateY(-2px); }
+
+    /* ─── FLIP THE SCRIPT ─── */
+    #flip {
+      background: #080a12;
+      padding: 120px 64px;
+    }
+
+    #flip .inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .flip-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+      margin-bottom: 80px;
+    }
+
+    .flip-problem {
+      border-left: 3px solid rgba(255,255,255,0.1);
+      padding-left: 32px;
+    }
+
+    .flip-problem p {
+      font-size: 20px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.5;
+      margin-bottom: 20px;
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    .flip-problem .risky {
+      font-size: 16px;
+      color: rgba(255,255,255,0.45);
+      font-weight: 500;
+      font-family: 'Inter', sans-serif;
+      margin-bottom: 12px;
+    }
+
+    .flip-script {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--blue-light);
+      font-family: 'Space Grotesk', sans-serif;
+      letter-spacing: -0.5px;
+    }
+
+    .flip-diana {
+      padding-top: 8px;
+    }
+
+    .flip-diana .label {
+      display: block;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--blue-light);
+      margin-bottom: 20px;
+    }
+
+    .flip-diana p {
+      font-size: 16px;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+
+    .flip-proof {
+      background: rgba(79,110,247,0.06);
+      border: 1px solid rgba(79,110,247,0.2);
+      border-radius: 16px;
+      padding: 40px 48px;
+      text-align: center;
+    }
+
+    .flip-proof p {
+      font-size: 22px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.5);
+      font-family: 'Space Grotesk', sans-serif;
+      margin-bottom: 8px;
+    }
+
+    .flip-proof strong {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--white);
+      font-family: 'Space Grotesk', sans-serif;
+      display: block;
+      letter-spacing: -0.5px;
+    }
+
+    /* ─── WHAT YOU GET ─── */
+    #what-you-get {
+      background: #ffffff;
+      padding: 120px 64px;
+    }
+
+    #what-you-get .inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .wyg-header {
+      margin-bottom: 56px;
+    }
+
+    .wyg-label {
+      display: block;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 20px;
+    }
+
+    .wyg-title {
+      font-size: clamp(36px, 5vw, 56px);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -1.5px;
+      color: #0a0c14;
+      margin-bottom: 20px;
+    }
+
+    .wyg-intro {
+      font-size: 17px;
+      color: #374151;
+      line-height: 1.75;
+      max-width: 680px;
+      margin-bottom: 12px;
+    }
+
+    .wyg-intro-2 {
+      font-size: 15px;
+      color: #6b7280;
+      line-height: 1.75;
+      max-width: 680px;
+      margin-bottom: 4px;
+    }
+
+    .wyg-foundation {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--blue);
+      margin-bottom: 56px;
+    }
+
+    .wyg-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      margin-bottom: 56px;
+    }
+
+    .wyg-card {
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+      border-radius: 20px;
+      padding: 40px;
+    }
+
+    .wyg-card h3 {
+      font-size: 16px;
+      font-weight: 700;
+      color: #0a0c14;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .wyg-card h3 i {
+      color: var(--blue);
+      font-size: 18px;
+    }
+
+    .wyg-card ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .wyg-card ul li {
+      font-size: 14px;
+      color: #374151;
+      line-height: 1.6;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .wyg-card ul li::before {
+      content: '';
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--blue);
+      flex-shrink: 0;
+      margin-top: 7px;
+    }
+
+    .wyg-cta {
+      display: flex;
+      justify-content: center;
+    }
+
+    .btn-wyg {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--blue);
+      color: #0d1340;
+      border-radius: 10px;
+      padding: 16px 36px;
+      font-size: 16px;
+      font-weight: 700;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-wyg:hover { background: var(--blue-light); transform: translateY(-2px); }
+
+    /* ─── HOW WE WORK ─── */
+    #how-we-work {
+      background: #07080f;
+      padding: 120px 64px;
+    }
+
+    #how-we-work .inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .hww-header {
+      text-align: center;
+      margin-bottom: 80px;
+    }
+
+    .hww-label {
+      display: block;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--blue-light);
+      margin-bottom: 20px;
+    }
+
+    .hww-title {
+      font-size: clamp(36px, 5vw, 56px);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -1.5px;
+      color: var(--white);
+    }
+
+    .hww-phases {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-bottom: 80px;
+    }
+
+    .phase-card {
+      background: #0d0f1c;
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 20px;
+      padding: 44px 36px;
+      transition: border-color 0.3s, transform 0.2s;
+    }
+
+    .phase-card:hover {
+      border-color: rgba(107,132,255,0.35);
+      transform: translateY(-4px);
+    }
+
+    .phase-tag {
+      display: inline-block;
+      background: rgba(79,110,247,0.12);
+      border: 1px solid rgba(79,110,247,0.25);
+      border-radius: 100px;
+      padding: 5px 14px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--blue-light);
+      margin-bottom: 12px;
+    }
+
+    .phase-timeline {
+      font-size: 13px;
+      color: rgba(255,255,255,0.35);
+      font-weight: 500;
+      margin-bottom: 24px;
+    }
+
+    .phase-card h3 {
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: -0.8px;
+      color: var(--white);
+      margin-bottom: 20px;
+    }
+
+    .phase-card p {
+      font-size: 15px;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.75;
+    }
+
+    /* ─── GREENFIELD ─── */
+    #greenfield {
+      background: #ffffff;
+      padding: 120px 64px;
+    }
+
+    #greenfield .inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .gf-label {
+      display: block;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 20px;
+    }
+
+    .gf-title {
+      font-size: clamp(32px, 4vw, 48px);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -1.2px;
+      color: #0a0c14;
+      margin-bottom: 24px;
+    }
+
+    .gf-title em {
+      color: var(--blue);
+      font-style: italic;
+    }
+
+    .gf-body {
+      font-size: 16px;
+      color: #6b7280;
+      line-height: 1.75;
+      margin-bottom: 16px;
+    }
+
+    .gf-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-top: 8px;
+    }
+
+    .gf-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 15px;
+      color: #374151;
+    }
+
+    .gf-list li i {
+      color: var(--blue);
+      font-size: 18px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .gf-callout {
+      background: #0a0c14;
+      border-radius: 20px;
+      padding: 48px;
+    }
+
+    .gf-callout p {
+      font-size: 20px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.5);
+      font-family: 'Space Grotesk', sans-serif;
+      margin-bottom: 16px;
+      line-height: 1.5;
+    }
+
+    .gf-callout strong {
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--white);
+      font-family: 'Space Grotesk', sans-serif;
+      display: block;
+      letter-spacing: -0.3px;
+      line-height: 1.4;
+    }
+
+    /* ─── FINAL CTA ─── */
+    #final-cta {
+      background: #04050b;
+      padding: 140px 64px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-glow {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 700px; height: 300px;
+      background: radial-gradient(ellipse, rgba(79,110,247,0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    #final-cta .inner {
+      position: relative;
+      z-index: 1;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .cta-label {
+      display: block;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--blue-light);
+      margin-bottom: 20px;
+    }
+
+    .cta-title {
+      font-size: clamp(40px, 6vw, 64px);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -2px;
+      margin-bottom: 20px;
+    }
+
+    .cta-title em { color: var(--blue-light); font-style: italic; }
+
+    .cta-body {
+      font-size: 17px;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.7;
+      margin-bottom: 44px;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: #02030a;
+      border-top: 1px solid rgba(255,255,255,0.07);
+      padding: 72px 64px 40px;
+    }
+
+    .footer-inner { max-width: 1200px; margin: 0 auto; }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr 1fr;
+      gap: 48px;
+      padding-bottom: 56px;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .footer-logo { height: 36px; width: auto; margin-bottom: 20px; display: block; }
+    .footer-tagline { font-size: 14px; color: rgba(255,255,255,0.4); line-height: 1.7; max-width: 260px; }
+
+    .footer-col h4 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 13px; font-weight: 700;
+      letter-spacing: 1.5px; text-transform: uppercase;
+      color: rgba(255,255,255,0.35); margin-bottom: 20px;
+    }
+
+    .footer-col a { display: block; font-size: 14px; color: rgba(255,255,255,0.6); margin-bottom: 12px; transition: color 0.2s; }
+    .footer-col a:hover { color: var(--white); }
+
+    .footer-bottom { display: flex; align-items: center; justify-content: space-between; padding-top: 32px; }
+    .footer-copy { font-size: 13px; color: rgba(255,255,255,0.3); }
+
+    .footer-socials { display: flex; gap: 16px; }
+    .footer-socials a {
+      display: flex; align-items: center; justify-content: center;
+      width: 36px; height: 36px; border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.5); font-size: 16px;
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
+    }
+    .footer-socials a:hover { border-color: rgba(107,132,255,0.5); color: var(--blue-light); background: rgba(79,110,247,0.08); }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      nav { padding: 16px 24px; }
+      #hero { padding: 120px 24px 80px; }
+      .hero-content { width: 90%; max-width: 90%; }
+      #flip, #what-you-get, #how-we-work, #greenfield, #final-cta { padding-left: 24px; padding-right: 24px; }
+      .flip-grid { grid-template-columns: 1fr; gap: 48px; }
+      .wyg-grid { grid-template-columns: 1fr; }
+      .hww-phases { grid-template-columns: 1fr; }
+      #greenfield .inner { grid-template-columns: 1fr; gap: 48px; }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
+      footer { padding: 56px 24px 32px; }
+    }
+
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+      .hero-title { font-size: 38px; }
+      .hero-content { width: 100%; max-width: 100%; }
+      .hero-photo { background-attachment: scroll; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo">
+      <img src="images/LogoXipe.png" alt="Xipe" />
+    </a>
+    <div class="nav-links">
+      <a href="software-development.html" class="active">Product Development</a>
+      <a href="index.html#how-we-work">Consulting</a>
+      <button class="btn-primary" onclick="window.location.href='index.html#contact'">Talk to Us</button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-photo"></div>
+    <div class="hero-content">
+      <div class="hero-badge">Product Development</div>
+      <h1 class="hero-title">
+        Ship faster.<br/>
+        Build right.<br/>
+        <em>Launch with confidence.</em>
+      </h1>
+      <p class="hero-subtitle">
+        Your product runs on an AI-augmented development pipeline that tests, validates, and ships code from day one; not at the end.
+      </p>
+      <p class="hero-subtitle-2">
+        No surprises. No wasted sprints. Just working software, delivered continuously.
+      </p>
+      <a href="index.html#contact" class="btn-hero">Build your product with us &rarr;</a>
+    </div>
+  </section>
+
+  <!-- FLIP THE SCRIPT -->
+  <section id="flip">
+    <div class="inner">
+      <div class="flip-grid">
+        <div class="flip-problem">
+          <p>Traditional teams spend months writing code before validating a single assumption.</p>
+          <p class="risky">That's expensive. And it's avoidable.</p>
+          <div class="flip-script">We flip the script.</div>
+        </div>
+        <div class="flip-diana">
+          <span class="label">Powered by DIANA</span>
+          <p>
+            DIANA defines exactly how every feature should behave before a single line is written. Each piece of functionality is verified the moment it exists; not in a final QA sprint weeks later.
+          </p>
+          <p>
+            Your product, architecture, and decisions are documented automatically as development progresses. Your team moves fast; without losing clarity or control.
+          </p>
+        </div>
+      </div>
+      <div class="flip-proof">
+        <p>One source of truth. Zero guesswork.</p>
+        <strong>We prove it works; from day one.</strong>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT YOU GET -->
+  <section id="what-you-get">
+    <div class="inner">
+      <div class="wyg-header">
+        <span class="wyg-label">What You Get</span>
+        <h2 class="wyg-title">A Minimal Commercial Product</h2>
+        <p class="wyg-intro">The <strong>first real version of your product</strong>; not a prototype, not a demo.</p>
+        <p class="wyg-intro-2">Your MCP is built to operate your business, serve real users, and validate your market from day one. Production-ready. Commercially viable. Immediately.</p>
+        <p class="wyg-foundation">Built to scale. Not to be rewritten.</p>
+      </div>
+      <div class="wyg-grid">
+        <div class="wyg-card">
+          <h3><i class="bi bi-box-seam"></i> Your product includes</h3>
+          <ul>
+            <li>A production-ready .NET platform engineered for your market</li>
+            <li>The core features needed to deliver your service through the product</li>
+            <li>A scalable architecture that evolves with real usage; not assumptions</li>
+            <li>Clean foundations that eliminate costly rewrites down the road</li>
+          </ul>
+        </div>
+        <div class="wyg-card">
+          <h3><i class="bi bi-stars"></i> What that means for you</h3>
+          <ul>
+            <li>Faster time to market; without sacrificing quality</li>
+            <li>Full code ownership. No vendor lock-in, ever</li>
+            <li>Visible progress every sprint; measurable, not just promised</li>
+            <li>Real user feedback integrated from the first release</li>
+            <li>A roadmap that flexes without derailing your timeline</li>
+            <li>A technical foundation that supports growth, not just launch</li>
+          </ul>
+        </div>
+      </div>
+      <div class="wyg-cta">
+        <a href="index.html#contact" class="btn-wyg">Let's scope your project &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW WE WORK -->
+  <section id="how-we-work">
+    <div class="inner">
+      <div class="hww-header">
+        <span class="hww-label">How We Work</span>
+        <h2 class="hww-title">Structured for speed. Engineered to last.</h2>
+      </div>
+      <div class="hww-phases">
+        <div class="phase-card">
+          <span class="phase-tag">Phase 01</span>
+          <div class="phase-timeline">Weeks 1–4</div>
+          <h3>Blueprint</h3>
+          <p>
+            We align on your idea, your market, and your business goals. The output is a clear product blueprint; what gets built, why it matters, and how it evolves. Every future decision traces back to this foundation.
+          </p>
+        </div>
+        <div class="phase-card">
+          <span class="phase-tag">Phase 02</span>
+          <div class="phase-timeline">Weeks 1–4</div>
+          <h3>Pipeline</h3>
+          <p>
+            In parallel, we deploy the DIANA-powered development pipeline. This becomes the operating engine behind every sprint; continuous validation, automated testing, and delivery without the bottlenecks.
+          </p>
+        </div>
+        <div class="phase-card">
+          <span class="phase-tag">Phase 03</span>
+          <div class="phase-timeline">Months 2–6</div>
+          <h3>Flow</h3>
+          <p>
+            Development begins. Real progress, every week. Features prioritized by business impact; not by arbitrary backlog order. Continuous delivery, continuous feedback, continuous momentum.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GREENFIELD -->
+  <section id="greenfield">
+    <div class="inner">
+      <div>
+        <span class="gf-label">Built for New Products</span>
+        <h2 class="gf-title">We specialize in <em>greenfield.</em><br/>Zero legacy. Zero compromise.</h2>
+        <p class="gf-body">We don't patch broken systems or inherit other teams' technical debt. We build from a clean slate; so the architecture serves your product, not someone else's past decisions.</p>
+        <ul class="gf-list">
+          <li><i class="bi bi-check-circle-fill"></i> Clean architecture engineered from day one</li>
+          <li><i class="bi bi-check-circle-fill"></i> No legacy code to untangle or work around</li>
+          <li><i class="bi bi-check-circle-fill"></i> No inherited debt slowing your roadmap</li>
+          <li><i class="bi bi-check-circle-fill"></i> Built to evolve with your business; not replaced by it</li>
+        </ul>
+      </div>
+      <div class="gf-callout">
+        <p>You bring the vision.</p>
+        <strong>We bring the engineering system to build it right; the first time.</strong>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section id="final-cta">
+    <div class="cta-glow"></div>
+    <div class="inner">
+      <span class="cta-label">Next Step</span>
+      <h2 class="cta-title">Let's build<br/><em>your product.</em></h2>
+      <p class="cta-body">
+        Share your vision. We'll design the path to get there; with a clear plan tailored to your goals, timeline, and market.
+      </p>
+      <a href="index.html#contact" class="btn-hero">Send us your idea &rarr;</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <img src="images/LogoXipe.png" alt="Xipe" class="footer-logo" />
+          <p class="footer-tagline">Build software that moves at the speed of AI.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <a href="software-development.html">Product Development</a>
+          <a href="index.html#services">AI & Technology Consulting</a>
+          <a href="index.html#staff-aug">Staff Augmentation</a>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <a href="index.html#contact">Get in Touch</a>
+          <a href="mailto:hola@xipetechnology.com">hola@xipetechnology.com</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">© 2025 Xipe. All rights reserved.</p>
+        <div class="footer-socials">
+          <a href="https://www.instagram.com/xipe" target="_blank" rel="noopener" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+          <a href="https://www.linkedin.com/company/xipe" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
