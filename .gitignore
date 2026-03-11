@@ -1,0 +1,11 @@
+## .NET
+bin/
+obj/
+publish/
+*.user
+
+## Visual Studio
+.vs/
+
+## macOS
+.DS_Store
