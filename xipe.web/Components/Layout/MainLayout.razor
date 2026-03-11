@@ -1,0 +1,57 @@
+@inherits LayoutComponentBase
+
+<!-- NAV -->
+<nav>
+    <a href="/" class="nav-logo">
+        <img src="images/LogoXipe.png" alt="Xipe" />
+    </a>
+    <div class="nav-links">
+        <NavLink href="software-development" Match="NavLinkMatch.All">Product Development</NavLink>
+        <NavLink href="consulting" Match="NavLinkMatch.All">AI &amp; Technology Consulting</NavLink>
+        <button class="btn-primary" onclick="window.location.href='/#contact'">Talk to Us</button>
+    </div>
+</nav>
+
+@Body
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-inner">
+        <div class="footer-top">
+            <div class="footer-brand">
+                <img src="images/LogoXipe.png" alt="Xipe" class="footer-logo" />
+                <p class="footer-tagline">Build software that moves at the speed of AI.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Services</h4>
+                <a href="/software-development">Product Development</a>
+                <a href="/consulting">AI &amp; Technology Consulting</a>
+            </div>
+            <div class="footer-col">
+                <h4>XILO</h4>
+                <a href="https://howitshifts.com/" target="_blank" rel="noopener">How it Shifts</a>
+                <a href="https://metaprogramming.ai" target="_blank" rel="noopener">DIANA</a>
+                <a href="#" target="_blank" rel="noopener">Web Development</a>
+                <a href="#" target="_blank" rel="noopener">Xeekers</a>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <a href="/#contact">Get in Touch</a>
+                <a href="mailto:hola@xipetechnology.com">hola@xipetechnology.com</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="footer-copy">&copy; 2025 Xipe. All rights reserved.</p>
+            <div class="footer-socials">
+                <a href="https://www.instagram.com/xipe_group/" target="_blank" rel="noopener" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                <a href="https://www.linkedin.com/company/xipe-group" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<div id="blazor-error-ui" data-nosnippet>
+    An unhandled error has occurred.
+    <a href="." class="reload">Reload</a>
+    <span class="dismiss">🗙</span>
+</div>

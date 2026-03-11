@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Consulting – Xipe</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue: #4f6ef7;
+      --blue-light: #6b84ff;
+      --blue-dim: #3a56e8;
+      --white: #ffffff;
+      --gray: #9ca3af;
+      --dark-bg: #0a0c14;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--dark-bg);
+      color: var(--white);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a { text-decoration: none; color: inherit; }
+    h1, h2, h3 { font-family: 'Space Grotesk', sans-serif; }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 64px;
+      background: rgba(10,12,20,0.7);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .nav-logo { display: flex; align-items: center; }
+    .nav-logo img { height: 32px; width: auto; }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+    }
+
+    .nav-links a {
+      font-size: 15px;
+      color: rgba(255,255,255,0.85);
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--white); }
+    .nav-links a.active { color: var(--blue-light); }
+
+    .btn-primary {
+      background: var(--blue);
+      color: #0d1340;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 22px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      font-family: inherit;
+    }
+    .btn-primary:hover { background: var(--blue-light); transform: translateY(-1px); }
+
+    /* ─── HERO ─── */
+    #hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 140px 64px 100px 180px;
+      overflow: hidden;
+    }
+
+    .hero-bg { position: absolute; inset: 0; background: #060810; z-index: 0; }
+
+    .hero-photo {
+      position: absolute; inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1553877522-43269d4ea984?w=1920&auto=format&fit=crop&q=80');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      opacity: 0.25;
+      z-index: 0;
+    }
+
+    .hero-photo::after {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(to right, rgba(6,8,16,0.9) 0%, rgba(6,8,16,0.4) 60%, rgba(6,8,16,0.1) 100%),
+        linear-gradient(to top, rgba(6,8,16,0.7) 0%, transparent 50%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      width: 60%;
+      max-width: 60%;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(79,110,247,0.15);
+      border: 1px solid rgba(79,110,247,0.35);
+      border-radius: 100px;
+      padding: 6px 16px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1.2px;
+      color: var(--blue-light);
+      text-transform: uppercase;
+      margin-bottom: 32px;
+    }
+    .hero-badge::before { content: '•'; font-size: 16px; }
+
+    .hero-title {
+      font-size: clamp(44px, 6vw, 72px);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -2px;
+      margin-bottom: 28px;
+    }
+
+    .hero-title em { font-style: italic; color: var(--blue-light); }
+
+    .hero-subtitle {
+      font-size: 17px;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.75;
+      margin-bottom: 16px;
+    }
+
+    .hero-subtitle-2 {
+      font-size: 16px;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.75;
+      margin-bottom: 44px;
+    }
+
+    .btn-hero {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--blue);
+      color: #0d1340;
+      border-radius: 10px;
+      padding: 14px 28px;
+      font-size: 16px;
+      font-weight: 700;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-hero:hover { background: var(--blue-light); transform: translateY(-2px); }
+
+    /* ─── WHAT WE ADVISE ON ─── */
+    #advise {
+      background: #ffffff;
+      padding: 120px 64px;
+    }
+
+    #advise .inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .advise-label {
+      display: block;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 20px;
+    }
+
+    .advise-title {
+      font-size: clamp(36px, 5vw, 56px);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -1.5px;
+      color: #0a0c14;
+      margin-bottom: 20px;
+    }
+
+    .advise-intro {
+      font-size: 17px;
+      color: #374151;
+      line-height: 1.75;
+      max-width: 680px;
+      margin-bottom: 64px;
+    }
+
+    .advise-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    .advise-card {
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+      border-radius: 20px;
+      padding: 40px;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .advise-card:hover {
+      border-color: rgba(79,110,247,0.4);
+      box-shadow: 0 0 24px rgba(79,110,247,0.08);
+    }
+
+    .advise-card-icon {
+      width: 48px;
+      height: 48px;
+      background: rgba(79,110,247,0.1);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      font-size: 22px;
+      color: var(--blue);
+    }
+
+    .advise-card h3 {
+      font-size: 20px;
+      font-weight: 700;
+      color: #0a0c14;
+      margin-bottom: 12px;
+      letter-spacing: -0.3px;
+    }
+
+    .advise-card p {
+      font-size: 15px;
+      color: #6b7280;
+      line-height: 1.7;
+    }
+
+    /* ─── ADVISORY SESSIONS ─── */
+    #sessions {
+      background: #07080f;
+      padding: 120px 64px;
+    }
+
+    #sessions .inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .sessions-label {
+      display: block;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--blue-light);
+      margin-bottom: 20px;
+    }
+
+    .sessions-title {
+      font-size: clamp(32px, 4vw, 48px);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -1.2px;
+      color: var(--white);
+      margin-bottom: 24px;
+    }
+
+    .sessions-title em {
+      color: var(--blue-light);
+      font-style: italic;
+    }
+
+    .sessions-body {
+      font-size: 16px;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.75;
+      margin-bottom: 40px;
+    }
+
+    .sessions-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 44px;
+    }
+
+    .sessions-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 15px;
+      color: rgba(255,255,255,0.7);
+    }
+
+    .sessions-list li i {
+      color: var(--blue-light);
+      font-size: 18px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .btn-sessions {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--blue);
+      color: #0d1340;
+      border-radius: 10px;
+      padding: 14px 28px;
+      font-size: 16px;
+      font-weight: 700;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-sessions:hover { background: var(--blue-light); transform: translateY(-2px); }
+
+    .sessions-callout {
+      background: rgba(79,110,247,0.06);
+      border: 1px solid rgba(79,110,247,0.2);
+      border-radius: 20px;
+      padding: 48px;
+    }
+
+    .sessions-callout p {
+      font-size: 18px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.5);
+      font-family: 'Space Grotesk', sans-serif;
+      margin-bottom: 16px;
+      line-height: 1.5;
+    }
+
+    .sessions-callout strong {
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--white);
+      font-family: 'Space Grotesk', sans-serif;
+      display: block;
+      letter-spacing: -0.3px;
+      line-height: 1.4;
+    }
+
+    /* ─── SENIOR PRACTITIONERS ─── */
+    #practitioners {
+      background: #ffffff;
+      padding: 120px 64px;
+    }
+
+    #practitioners .inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .prac-label {
+      display: block;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 20px;
+    }
+
+    .prac-title {
+      font-size: clamp(32px, 4vw, 48px);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -1.2px;
+      color: #0a0c14;
+      margin-bottom: 24px;
+    }
+
+    .prac-title em {
+      color: var(--blue);
+      font-style: italic;
+    }
+
+    .prac-body {
+      font-size: 16px;
+      color: #6b7280;
+      line-height: 1.75;
+      margin-bottom: 16px;
+    }
+
+    .prac-callout {
+      background: #0a0c14;
+      border-radius: 20px;
+      padding: 48px;
+    }
+
+    .prac-callout p {
+      font-size: 18px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.5);
+      font-family: 'Space Grotesk', sans-serif;
+      margin-bottom: 16px;
+      line-height: 1.5;
+    }
+
+    .prac-callout strong {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--white);
+      font-family: 'Space Grotesk', sans-serif;
+      display: block;
+      letter-spacing: -0.3px;
+      line-height: 1.5;
+    }
+
+    /* ─── FINAL CTA ─── */
+    #final-cta {
+      background: #04050b;
+      padding: 140px 64px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-glow {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 700px; height: 300px;
+      background: radial-gradient(ellipse, rgba(79,110,247,0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    #final-cta .inner {
+      position: relative;
+      z-index: 1;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .cta-label {
+      display: block;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--blue-light);
+      margin-bottom: 20px;
+    }
+
+    .cta-title {
+      font-size: clamp(40px, 6vw, 64px);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -2px;
+      margin-bottom: 20px;
+    }
+
+    .cta-title em { color: var(--blue-light); font-style: italic; }
+
+    .cta-body {
+      font-size: 17px;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.7;
+      margin-bottom: 44px;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: #02030a;
+      border-top: 1px solid rgba(255,255,255,0.07);
+      padding: 72px 64px 40px;
+    }
+
+    .footer-inner { max-width: 1200px; margin: 0 auto; }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr 1fr;
+      gap: 48px;
+      padding-bottom: 56px;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .footer-logo { height: 36px; width: auto; margin-bottom: 20px; display: block; }
+    .footer-tagline { font-size: 14px; color: rgba(255,255,255,0.4); line-height: 1.7; max-width: 260px; }
+
+    .footer-col h4 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 13px; font-weight: 700;
+      letter-spacing: 1.5px; text-transform: uppercase;
+      color: rgba(255,255,255,0.35); margin-bottom: 20px;
+    }
+
+    .footer-col a { display: block; font-size: 14px; color: rgba(255,255,255,0.6); margin-bottom: 12px; transition: color 0.2s; }
+    .footer-col a:hover { color: var(--white); }
+
+    .footer-bottom { display: flex; align-items: center; justify-content: space-between; padding-top: 32px; }
+    .footer-copy { font-size: 13px; color: rgba(255,255,255,0.3); }
+
+    .footer-socials { display: flex; gap: 16px; }
+    .footer-socials a {
+      display: flex; align-items: center; justify-content: center;
+      width: 36px; height: 36px; border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.5); font-size: 16px;
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
+    }
+    .footer-socials a:hover { border-color: rgba(107,132,255,0.5); color: var(--blue-light); background: rgba(79,110,247,0.08); }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      nav { padding: 16px 24px; }
+      #hero { padding: 120px 24px 80px; }
+      .hero-content { width: 90%; max-width: 90%; }
+      #advise, #sessions, #practitioners, #final-cta { padding-left: 24px; padding-right: 24px; }
+      .advise-grid { grid-template-columns: 1fr; }
+      #sessions .inner, #practitioners .inner { grid-template-columns: 1fr; gap: 48px; }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
+      footer { padding: 56px 24px 32px; }
+    }
+
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+      .hero-title { font-size: 38px; }
+      .hero-content { width: 100%; max-width: 100%; }
+      .hero-photo { background-attachment: scroll; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo">
+      <img src="images/LogoXipe.png" alt="Xipe" />
+    </a>
+    <div class="nav-links">
+      <a href="software-development.html">Product Development</a>
+      <a href="consulting.html" class="active">AI & Technology Consulting</a>
+      <button class="btn-primary" onclick="window.location.href='index.html#contact'">Talk to Us</button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-photo"></div>
+    <div class="hero-content">
+      <div class="hero-badge">AI & Technology Consulting</div>
+      <h1 class="hero-title">
+        Strategic advisory<br/>
+        for <em>AI-driven</em><br/>
+        products.
+      </h1>
+      <p class="hero-subtitle">
+        Some technology decisions are too important to figure out by trial and error.
+      </p>
+      <p class="hero-subtitle-2">
+        At Xipe, we advise companies on how to design, build, and evolve software systems in the age of artificial intelligence.
+      </p>
+      <a href="index.html#contact" class="btn-hero">Request an advisory session &rarr;</a>
+    </div>
+  </section>
+
+  <!-- WHAT WE ADVISE ON -->
+  <section id="advise">
+    <div class="inner">
+      <span class="advise-label">What We Advise On</span>
+      <h2 class="advise-title">Senior judgment.<br/>Where it matters most.</h2>
+      <p class="advise-intro">We typically work with founders, executives, and product leaders on decisions such as:</p>
+      <div class="advise-grid">
+        <div class="advise-card">
+          <div class="advise-card-icon"><i class="bi bi-cpu"></i></div>
+          <h3>AI Strategy</h3>
+          <p>How artificial intelligence should shape your product and operations; from model selection to implementation roadmap.</p>
+        </div>
+        <div class="advise-card">
+          <div class="advise-card-icon"><i class="bi bi-diagram-3"></i></div>
+          <h3>Software Architecture</h3>
+          <p>Designing systems that scale and remain maintainable; built to evolve with your business, not against it.</p>
+        </div>
+        <div class="advise-card">
+          <div class="advise-card-icon"><i class="bi bi-compass"></i></div>
+          <h3>Product Technology Strategy</h3>
+          <p>Aligning product vision with technical execution; so your roadmap is ambitious and grounded in reality.</p>
+        </div>
+        <div class="advise-card">
+          <div class="advise-card-icon"><i class="bi bi-gear"></i></div>
+          <h3>Engineering Systems</h3>
+          <p>Improving how teams design, build, and ship software; faster cycles, higher quality, less overhead.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ADVISORY SESSIONS -->
+  <section id="sessions">
+    <div class="inner">
+      <div>
+        <span class="sessions-label">Advisory Sessions</span>
+        <h2 class="sessions-title">Designed for moments where <em>clarity matters</em> more than speed.</h2>
+        <p class="sessions-body">Our consulting is structured around high-impact sessions that give you direct access to senior technical judgment; shaped by years of building and operating real software platforms.</p>
+        <ul class="sessions-list">
+          <li><i class="bi bi-check-circle-fill"></i> Architecture and technology reviews</li>
+          <li><i class="bi bi-check-circle-fill"></i> AI opportunity assessments</li>
+          <li><i class="bi bi-check-circle-fill"></i> Product technology strategy</li>
+          <li><i class="bi bi-check-circle-fill"></i> Development system audits</li>
+        </ul>
+        <a href="index.html#contact" class="btn-sessions">Request a quote &rarr;</a>
+      </div>
+      <div class="sessions-callout">
+        <p>More than 15 years of experience.</p>
+        <strong>Designing production software used by real businesses; combined with modern AI-augmented development practices.</strong>
+      </div>
+    </div>
+  </section>
+
+  <!-- SENIOR PRACTITIONERS -->
+  <section id="practitioners">
+    <div class="inner">
+      <div>
+        <span class="prac-label">Who You Work With</span>
+        <h2 class="prac-title">Work directly with <em>senior specialists.</em></h2>
+        <p class="prac-body">When you engage with Xipe, you work with engineers and product strategists who have spent years designing and operating real software platforms.</p>
+        <p class="prac-body">It's guidance from people who have spent years solving real problems in production environments; not consultants reading from a playbook.</p>
+        <p class="prac-body">Our role is simple: help you make the right technology decisions before they become expensive mistakes.</p>
+      </div>
+      <div class="prac-callout">
+        <p>You bring the question.</p>
+        <strong>We bring the experience to answer it with confidence.</strong>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section id="final-cta">
+    <div class="cta-glow"></div>
+    <div class="inner">
+      <span class="cta-label">Start the Conversation</span>
+      <h2 class="cta-title">The right advice<br/><em>at the right time.</em></h2>
+      <p class="cta-body">
+        If you're evaluating AI opportunities, designing a new platform, or facing a critical technology decision; we'd be glad to help.
+      </p>
+      <a href="index.html#contact" class="btn-hero">Contact the team &rarr;</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <img src="images/LogoXipe.png" alt="Xipe" class="footer-logo" />
+          <p class="footer-tagline">Build software that moves at the speed of AI.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <a href="software-development.html">Product Development</a>
+          <a href="consulting.html">AI & Technology Consulting</a>
+        </div>
+        <div class="footer-col">
+          <h4>XILO</h4>
+          <a href="https://howitshifts.com/" target="_blank" rel="noopener">How it Shifts</a>
+          <a href="https://metaprogramming.ai" target="_blank" rel="noopener">DIANA</a>
+          <a href="#" target="_blank" rel="noopener">Web Development</a>
+          <a href="#" target="_blank" rel="noopener">Xeekers</a>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <a href="index.html#contact">Get in Touch</a>
+          <a href="mailto:hola@xipetechnology.com">hola@xipetechnology.com</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">© 2025 Xipe. All rights reserved.</p>
+        <div class="footer-socials">
+          <a href="https://www.instagram.com/xipe_group/" target="_blank" rel="noopener" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+          <a href="https://www.linkedin.com/company/xipe-group" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

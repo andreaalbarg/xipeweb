@@ -1,0 +1,7 @@
+C:\Users\Usuario\source\repos\andreaalbarg\xipeweb\publish\xipe.web.exe
+C:\Users\Usuario\source\repos\andreaalbarg\xipeweb\publish\appsettings.Development.json
+C:\Users\Usuario\source\repos\andreaalbarg\xipeweb\publish\appsettings.json
+C:\Users\Usuario\source\repos\andreaalbarg\xipeweb\publish\xipe.web.dll
+C:\Users\Usuario\source\repos\andreaalbarg\xipeweb\publish\xipe.web.deps.json
+C:\Users\Usuario\source\repos\andreaalbarg\xipeweb\publish\xipe.web.runtimeconfig.json
+C:\Users\Usuario\source\repos\andreaalbarg\xipeweb\publish\xipe.web.pdb
