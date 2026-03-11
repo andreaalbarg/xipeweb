@@ -879,6 +879,68 @@
       transform: translateY(-2px);
     }
 
+    /* ─── XILO ─── */
+    #xilo {
+      background: #080a12;
+      padding: 100px 64px;
+      text-align: center;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+
+    #xilo .inner {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .xilo-label {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--blue-light);
+      margin-bottom: 24px;
+    }
+
+    .xilo-title {
+      font-size: clamp(36px, 5vw, 56px);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -1.5px;
+      color: var(--white);
+      margin-bottom: 24px;
+    }
+
+    .xilo-title em {
+      color: var(--blue-light);
+      font-style: italic;
+    }
+
+    .xilo-body {
+      font-size: 17px;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.75;
+      margin-bottom: 40px;
+    }
+
+    .btn-xilo {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid rgba(107,132,255,0.5);
+      color: var(--blue-light);
+      border-radius: 10px;
+      padding: 14px 28px;
+      font-size: 16px;
+      font-weight: 600;
+      transition: background 0.2s, border-color 0.2s, transform 0.15s;
+    }
+    .btn-xilo:hover {
+      background: rgba(79,110,247,0.1);
+      border-color: var(--blue-light);
+      transform: translateY(-2px);
+    }
+
     /* ─── CONTACT ─── */
     #contact {
       position: relative;
@@ -1149,7 +1211,7 @@
     </a>
     <div class="nav-links">
       <a href="software-development.html">Product Development</a>
-      <a href="#how-we-work">Consulting</a>
+      <a href="consulting.html">AI & Technology Consulting</a>
       <button class="btn-primary" onclick="window.location.href='#contact'">Talk to Us</button>
     </div>
   </nav>
@@ -1181,7 +1243,7 @@
       Engineering is no longer just about writing code. It's about <em>building smarter.</em>
     </h2>
     <p class="section-body">
-      At the center of every project is <strong>DIANA</strong>; a cutting-edge AI engine that accelerates how teams design, build, and ship software. Faster cycles. Higher quality. Less overhead.
+      At the center of every project is <a href="https://metaprogramming.ai" target="_blank" rel="noopener"><strong>DIANA</strong></a>; a cutting-edge AI engine that accelerates how teams design, build, and ship software. Faster cycles. Higher quality. Less overhead.
     </p>
     <a href="#contact" class="btn-outline">Build with us &rarr;</a>
   </section>
@@ -1244,7 +1306,7 @@
           <span class="service-badge">AI &amp; Technology Consulting</span>
           <h3>Rethink how your team builds with AI at the center.</h3>
           <p>We help engineering leaders adopt AI augmented workflows, modernize their architecture, and establish the practices that let teams ship with confidence, not just speed.</p>
-          <a href="#" class="link-arrow">Explore our approach &rarr;</a>
+          <a href="consulting.html" class="link-arrow">Explore our approach &rarr;</a>
         </div>
       </div>
     </div>
@@ -1282,7 +1344,7 @@
         </div>
       </div>
       <div class="testimonials-cta">
-        <a href="#" class="btn-clutch">Read all reviews on Clutch &rarr;</a>
+        <a href="https://clutch.co/profile/xipe" target="_blank" rel="noopener" class="btn-clutch">Read all reviews on Clutch &rarr;</a>
       </div>
     </div>
   </section>
@@ -1333,7 +1395,7 @@
             <img src="images/team-andrea.jpg" alt="Andrea Albar" />
           </div>
           <div class="team-name">Andrea Albar</div>
-          <div class="team-role">Marketing</div>
+          <div class="team-role">Marketing Specialist</div>
           <span class="team-linkedin"><i class="bi bi-linkedin"></i> LinkedIn</span>
         </a>
         <a href="https://www.linkedin.com/in/martin-lachica-b6048b109/" target="_blank" rel="noopener" class="team-card">
@@ -1349,7 +1411,7 @@
             <img src="images/team-patricia.jpg" alt="Patricia Preciado" />
           </div>
           <div class="team-name">Patricia Preciado</div>
-          <div class="team-role">Product Lead</div>
+          <div class="team-role">Business Specialist & Founder</div>
           <span class="team-linkedin"><i class="bi bi-linkedin"></i> LinkedIn</span>
         </a>
         <a href="https://www.linkedin.com/in/guillermo-espinola/" target="_blank" rel="noopener" class="team-card">
@@ -1357,10 +1419,20 @@
             <img src="images/team-guillermo.png" alt="Guillermo Espinola" />
           </div>
           <div class="team-name">Guillermo Espinola</div>
-          <div class="team-role">CEO & Founder</div>
+          <div class="team-role">AI Specialist & Founder</div>
           <span class="team-linkedin"><i class="bi bi-linkedin"></i> LinkedIn</span>
         </a>
       </div>
+    </div>
+  </section>
+
+  <!-- XILO -->
+  <section id="xilo">
+    <div class="inner">
+      <span class="xilo-label">XILO Group</span>
+      <h2 class="xilo-title">Where companies, initiatives,<br/>and community <em>come together.</em></h2>
+      <p class="xilo-body">XILO is a living space designed to build, collaborate, and support ideas that move people forward.</p>
+      <a href="#" class="btn-xilo">Visit XILO &rarr;</a>
     </div>
   </section>
 
@@ -1418,7 +1490,13 @@
           <h4>Services</h4>
           <a href="#services">Product Development</a>
           <a href="#services">AI & Technology Consulting</a>
-          <a href="#staff-aug">Staff Augmentation</a>
+        </div>
+        <div class="footer-col">
+          <h4>XILO</h4>
+          <a href="https://howitshifts.com/" target="_blank" rel="noopener">How it Shifts</a>
+          <a href="https://metaprogramming.ai" target="_blank" rel="noopener">DIANA</a>
+          <a href="#" target="_blank" rel="noopener">Web Development</a>
+          <a href="#" target="_blank" rel="noopener">Xeekers</a>
         </div>
         <div class="footer-col">
           <h4>Contact</h4>
@@ -1429,8 +1507,8 @@
       <div class="footer-bottom">
         <p class="footer-copy">© 2025 Xipe. All rights reserved.</p>
         <div class="footer-socials">
-          <a href="https://www.instagram.com/xipe" target="_blank" rel="noopener" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
-          <a href="https://www.linkedin.com/company/xipe" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+          <a href="https://www.instagram.com/xipe_group/" target="_blank" rel="noopener" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+          <a href="https://www.linkedin.com/company/xipe-group" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
         </div>
       </div>
     </div>
