@@ -1068,6 +1068,73 @@ nav {
   transform: translateY(-2px);
 }
 
+.form-error {
+  background: rgba(239,68,68,0.12);
+  border: 1px solid rgba(239,68,68,0.3);
+  border-radius: 10px;
+  padding: 14px 18px;
+  font-size: 14px;
+  color: #fca5a5;
+}
+
+/* ─── THANK YOU PAGE ─── */
+#thankyou {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 140px 64px 100px;
+  overflow: hidden;
+}
+
+.thankyou-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 720px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.thankyou-icon {
+  font-size: 64px;
+  color: var(--blue);
+  margin-bottom: 24px;
+  animation: thankyou-pop 0.5s ease-out;
+}
+
+@keyframes thankyou-pop {
+  0% { transform: scale(0); opacity: 0; }
+  60% { transform: scale(1.15); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.thankyou-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(36px, 5vw, 60px);
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -2px;
+  color: var(--white);
+  margin: 16px 0 24px;
+}
+
+.thankyou-subtitle {
+  font-size: 17px;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.75;
+  margin-bottom: 48px;
+}
+
+.thankyou-actions {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 /* ═══════════════════════════════════════════════════════════════
    CONSULTING.HTML – Page-specific sections
    ═══════════════════════════════════════════════════════════════ */
@@ -1902,7 +1969,7 @@ footer {
   .hero-content { width: 90%; max-width: 90%; }
 
   /* index */
-  #how-we-work, #ai-native, #services, #team, #staff-aug, #contact { padding-left: 24px; padding-right: 24px; }
+  #how-we-work, #ai-native, #services, #team, #staff-aug, #contact, #thankyou { padding-left: 24px; padding-right: 24px; }
   #ai-native .inner { grid-template-columns: 1fr; gap: 48px; }
   .services-grid { grid-template-columns: 1fr; }
   .team-grid { grid-template-columns: 1fr 1fr; }

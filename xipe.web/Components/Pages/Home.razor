@@ -1,6 +1,7 @@
 @page "/"
 @rendermode InteractiveServer
-@inject xipe.web.Services.EmailService EmailService
+@inject IHttpClientFactory HttpClientFactory
+@inject NavigationManager Navigation
 
 <PageTitle>Xipe – Build software that moves at the speed of AI</PageTitle>
 
@@ -233,52 +234,43 @@
         <h2 class="contact-title">Let's build something great.</h2>
         <p class="contact-subtitle">Tell us about your project and we'll get back to you within 24 hours.</p>
 
-        @if (formSent)
-        {
-            <div class="form-success">
-                <p>Thanks, @formName! We'll get back to you within 24 hours.</p>
+        <form class="contact-form" @onsubmit="HandleSubmit" @onsubmit:preventDefault>
+            @if (!string.IsNullOrEmpty(formError))
+            {
+                <div class="form-error">@formError</div>
+            }
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" placeholder="Your name" @bind="formName" required />
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" placeholder="you@company.com" @bind="formEmail" required />
+                </div>
             </div>
-        }
-        else
-        {
-            <form class="contact-form" @onsubmit="HandleSubmit" @onsubmit:preventDefault>
-                @if (!string.IsNullOrEmpty(formError))
-                {
-                    <div class="form-error">@formError</div>
-                }
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" id="name" placeholder="Your name" @bind="formName" required />
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" placeholder="you@company.com" @bind="formEmail" required />
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="company">Company</label>
-                    <input type="text" id="company" placeholder="Your company" @bind="formCompany" />
-                </div>
-                <div class="form-group">
-                    <label for="service">What are you looking for?</label>
-                    <select id="service" @bind="formService">
-                        <option value="" disabled selected>Select a service</option>
-                        <option value="Product Development">Product Development</option>
-                        <option value="AI &amp; Technology Consulting">AI &amp; Technology Consulting</option>
-                        <option value="Staff Augmentation">Staff Augmentation</option>
-                        <option value="Other">Other</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="message">Message</label>
-                    <textarea id="message" placeholder="Tell us about your project..." @bind="formMessage"></textarea>
-                </div>
-                <button type="submit" class="btn-contact" disabled="@isSending">
-                    @(isSending ? "Sending..." : "Send Message →")
-                </button>
-            </form>
-        }
+            <div class="form-group">
+                <label for="company">Company</label>
+                <input type="text" id="company" placeholder="Your company" @bind="formCompany" />
+            </div>
+            <div class="form-group">
+                <label for="service">What are you looking for?</label>
+                <select id="service" @bind="formService">
+                    <option value="" disabled selected>Select a service</option>
+                    <option value="Product Development">Product Development</option>
+                    <option value="AI &amp; Technology Consulting">AI &amp; Technology Consulting</option>
+                    <option value="Staff Augmentation">Staff Augmentation</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" placeholder="Tell us about your project..." @bind="formMessage"></textarea>
+            </div>
+            <button type="submit" class="btn-contact" disabled="@isSending">
+                @(isSending ? "Sending..." : "Send Message →")
+            </button>
+        </form>
     </div>
 </section>
 
@@ -289,7 +281,6 @@
     string formService = "";
     string formMessage = "";
     bool isSending = false;
-    bool formSent = false;
     string formError = "";
 
     async Task HandleSubmit()
@@ -302,13 +293,34 @@
 
         try
         {
-            await EmailService.SendContactFormAsync(formName, formEmail, formCompany, formService, formMessage);
-            formSent = true;
+            var client = HttpClientFactory.CreateClient();
+            var request = new HttpRequestMessage(HttpMethod.Post, "https://formspree.io/f/mlgpnjya")
+            {
+                Content = new FormUrlEncodedContent(new Dictionary<string, string>
+                {
+                    { "name", formName },
+                    { "email", formEmail },
+                    { "company", formCompany },
+                    { "service", formService },
+                    { "message", formMessage }
+                })
+            };
+            request.Headers.Add("Accept", "application/json");
+
+            var response = await client.SendAsync(request);
+
+            if (response.IsSuccessStatusCode)
+            {
+                Navigation.NavigateTo("/thankyou");
+            }
+            else
+            {
+                formError = "Something went wrong. Please try again or email us directly at hola@xipetechnology.com.";
+            }
         }
-        catch (Exception ex)
+        catch
         {
             formError = "Something went wrong. Please try again or email us directly at hola@xipetechnology.com.";
-            _ = ex;
         }
         finally
         {
