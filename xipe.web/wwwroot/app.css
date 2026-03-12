@@ -478,11 +478,15 @@ nav {
 }
 
 .service-card {
+  display: block;
   background: rgba(4,6,18,0.75);
   border: 1px solid rgba(255,255,255,0.08);
   border-radius: 20px;
   padding: 40px;
   transition: background 0.2s, transform 0.2s;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
 }
 
 .service-card:hover {

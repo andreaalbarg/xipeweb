@@ -2,10 +2,10 @@
   "version": "0.0.1",
   "configurations": [
     {
-      "name": "xipeweb",
-      "runtimeExecutable": "python3",
-      "runtimeArgs": ["-m", "http.server", "8000"],
-      "port": 8000
+      "name": "xipe.web",
+      "runtimeExecutable": "dotnet",
+      "runtimeArgs": ["run", "--project", "xipe.web/xipe.web.csproj", "--urls", "http://localhost:5153"],
+      "port": 5153
     }
   ]
 }

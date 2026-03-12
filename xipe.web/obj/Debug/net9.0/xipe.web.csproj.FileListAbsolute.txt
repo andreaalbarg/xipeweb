@@ -1,34 +1,68 @@
-C:\Users\Usuario\source\repos\andreaalbarg\xipeweb\xipe.web\bin\Debug\net9.0\appsettings.Development.json
-C:\Users\Usuario\source\repos\andreaalbarg\xipeweb\xipe.web\bin\Debug\net9.0\appsettings.json
-C:\Users\Usuario\source\repos\andreaalbarg\xipeweb\xipe.web\bin\Debug\net9.0\xipe.web.staticwebassets.runtime.json
-C:\Users\Usuario\source\repos\andreaalbarg\xipeweb\xipe.web\bin\Debug\net9.0\xipe.web.staticwebassets.endpoints.json
-C:\Users\Usuario\source\repos\andreaalbarg\xipeweb\xipe.web\bin\Debug\net9.0\xipe.web.exe
-C:\Users\Usuario\source\repos\andreaalbarg\xipeweb\xipe.web\bin\Debug\net9.0\xipe.web.deps.json
-C:\Users\Usuario\source\repos\andreaalbarg\xipeweb\xipe.web\bin\Debug\net9.0\xipe.web.runtimeconfig.json
-C:\Users\Usuario\source\repos\andreaalbarg\xipeweb\xipe.web\bin\Debug\net9.0\xipe.web.dll
-C:\Users\Usuario\source\repos\andreaalbarg\xipeweb\xipe.web\bin\Debug\net9.0\xipe.web.pdb
-C:\Users\Usuario\source\repos\andreaalbarg\xipeweb\xipe.web\obj\Debug\net9.0\rpswa.dswa.cache.json
-C:\Users\Usuario\source\repos\andreaalbarg\xipeweb\xipe.web\obj\Debug\net9.0\xipe.web.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\Usuario\source\repos\andreaalbarg\xipeweb\xipe.web\obj\Debug\net9.0\xipe.web.AssemblyInfoInputs.cache
-C:\Users\Usuario\source\repos\andreaalbarg\xipeweb\xipe.web\obj\Debug\net9.0\xipe.web.AssemblyInfo.cs
-C:\Users\Usuario\source\repos\andreaalbarg\xipeweb\xipe.web\obj\Debug\net9.0\xipe.web.csproj.CoreCompileInputs.cache
-C:\Users\Usuario\source\repos\andreaalbarg\xipeweb\xipe.web\obj\Debug\net9.0\xipe.web.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\Usuario\source\repos\andreaalbarg\xipeweb\xipe.web\obj\Debug\net9.0\xipe.web.sourcelink.json
-C:\Users\Usuario\source\repos\andreaalbarg\xipeweb\xipe.web\obj\Debug\net9.0\rjimswa.dswa.cache.json
-C:\Users\Usuario\source\repos\andreaalbarg\xipeweb\xipe.web\obj\Debug\net9.0\rjsmrazor.dswa.cache.json
-C:\Users\Usuario\source\repos\andreaalbarg\xipeweb\xipe.web\obj\Debug\net9.0\rjsmcshtml.dswa.cache.json
-C:\Users\Usuario\source\repos\andreaalbarg\xipeweb\xipe.web\obj\Debug\net9.0\scopedcss\Components\Layout\MainLayout.razor.rz.scp.css
-C:\Users\Usuario\source\repos\andreaalbarg\xipeweb\xipe.web\obj\Debug\net9.0\scopedcss\bundle\xipe.web.styles.css
-C:\Users\Usuario\source\repos\andreaalbarg\xipeweb\xipe.web\obj\Debug\net9.0\scopedcss\projectbundle\xipe.web.bundle.scp.css
-C:\Users\Usuario\source\repos\andreaalbarg\xipeweb\xipe.web\obj\Debug\net9.0\staticwebassets.build.json
-C:\Users\Usuario\source\repos\andreaalbarg\xipeweb\xipe.web\obj\Debug\net9.0\staticwebassets.build.json.cache
-C:\Users\Usuario\source\repos\andreaalbarg\xipeweb\xipe.web\obj\Debug\net9.0\staticwebassets.development.json
-C:\Users\Usuario\source\repos\andreaalbarg\xipeweb\xipe.web\obj\Debug\net9.0\staticwebassets.build.endpoints.json
-C:\Users\Usuario\source\repos\andreaalbarg\xipeweb\xipe.web\obj\Debug\net9.0\xipe.web.dll
-C:\Users\Usuario\source\repos\andreaalbarg\xipeweb\xipe.web\obj\Debug\net9.0\refint\xipe.web.dll
-C:\Users\Usuario\source\repos\andreaalbarg\xipeweb\xipe.web\obj\Debug\net9.0\xipe.web.pdb
-C:\Users\Usuario\source\repos\andreaalbarg\xipeweb\xipe.web\obj\Debug\net9.0\xipe.web.genruntimeconfig.cache
-C:\Users\Usuario\source\repos\andreaalbarg\xipeweb\xipe.web\obj\Debug\net9.0\ref\xipe.web.dll
-C:\Users\Usuario\source\repos\andreaalbarg\xipeweb\xipe.web\obj\Debug\net9.0\compressed\ao2k5a9hkv-tgyexamxyv.gz
-C:\Users\Usuario\source\repos\andreaalbarg\xipeweb\xipe.web\obj\Debug\net9.0\compressed\j7q6chf984-blzchzvcu5.gz
-C:\Users\Usuario\source\repos\andreaalbarg\xipeweb\xipe.web\obj\Debug\net9.0\compressed\vosbotgge5-blzchzvcu5.gz
+C:/Users/Usuario/source/repos/andreaalbarg/xipeweb/xipe.web/bin/Debug/net9.0/appsettings.Development.json
+C:/Users/Usuario/source/repos/andreaalbarg/xipeweb/xipe.web/bin/Debug/net9.0/appsettings.json
+C:/Users/Usuario/source/repos/andreaalbarg/xipeweb/xipe.web/bin/Debug/net9.0/xipe.web.staticwebassets.runtime.json
+C:/Users/Usuario/source/repos/andreaalbarg/xipeweb/xipe.web/bin/Debug/net9.0/xipe.web.staticwebassets.endpoints.json
+C:/Users/Usuario/source/repos/andreaalbarg/xipeweb/xipe.web/bin/Debug/net9.0/xipe.web.exe
+C:/Users/Usuario/source/repos/andreaalbarg/xipeweb/xipe.web/bin/Debug/net9.0/xipe.web.deps.json
+C:/Users/Usuario/source/repos/andreaalbarg/xipeweb/xipe.web/bin/Debug/net9.0/xipe.web.runtimeconfig.json
+C:/Users/Usuario/source/repos/andreaalbarg/xipeweb/xipe.web/bin/Debug/net9.0/xipe.web.dll
+C:/Users/Usuario/source/repos/andreaalbarg/xipeweb/xipe.web/bin/Debug/net9.0/xipe.web.pdb
+C:/Users/Usuario/source/repos/andreaalbarg/xipeweb/xipe.web/obj/Debug/net9.0/rpswa.dswa.cache.json
+C:/Users/Usuario/source/repos/andreaalbarg/xipeweb/xipe.web/obj/Debug/net9.0/xipe.web.GeneratedMSBuildEditorConfig.editorconfig
+C:/Users/Usuario/source/repos/andreaalbarg/xipeweb/xipe.web/obj/Debug/net9.0/xipe.web.AssemblyInfoInputs.cache
+C:/Users/Usuario/source/repos/andreaalbarg/xipeweb/xipe.web/obj/Debug/net9.0/xipe.web.AssemblyInfo.cs
+C:/Users/Usuario/source/repos/andreaalbarg/xipeweb/xipe.web/obj/Debug/net9.0/xipe.web.csproj.CoreCompileInputs.cache
+C:/Users/Usuario/source/repos/andreaalbarg/xipeweb/xipe.web/obj/Debug/net9.0/xipe.web.MvcApplicationPartsAssemblyInfo.cache
+C:/Users/Usuario/source/repos/andreaalbarg/xipeweb/xipe.web/obj/Debug/net9.0/xipe.web.sourcelink.json
+C:/Users/Usuario/source/repos/andreaalbarg/xipeweb/xipe.web/obj/Debug/net9.0/rjimswa.dswa.cache.json
+C:/Users/Usuario/source/repos/andreaalbarg/xipeweb/xipe.web/obj/Debug/net9.0/rjsmrazor.dswa.cache.json
+C:/Users/Usuario/source/repos/andreaalbarg/xipeweb/xipe.web/obj/Debug/net9.0/rjsmcshtml.dswa.cache.json
+C:/Users/Usuario/source/repos/andreaalbarg/xipeweb/xipe.web/obj/Debug/net9.0/scopedcss/Components/Layout/MainLayout.razor.rz.scp.css
+C:/Users/Usuario/source/repos/andreaalbarg/xipeweb/xipe.web/obj/Debug/net9.0/scopedcss/bundle/xipe.web.styles.css
+C:/Users/Usuario/source/repos/andreaalbarg/xipeweb/xipe.web/obj/Debug/net9.0/scopedcss/projectbundle/xipe.web.bundle.scp.css
+C:/Users/Usuario/source/repos/andreaalbarg/xipeweb/xipe.web/obj/Debug/net9.0/staticwebassets.build.json
+C:/Users/Usuario/source/repos/andreaalbarg/xipeweb/xipe.web/obj/Debug/net9.0/staticwebassets.build.json.cache
+C:/Users/Usuario/source/repos/andreaalbarg/xipeweb/xipe.web/obj/Debug/net9.0/staticwebassets.development.json
+C:/Users/Usuario/source/repos/andreaalbarg/xipeweb/xipe.web/obj/Debug/net9.0/staticwebassets.build.endpoints.json
+C:/Users/Usuario/source/repos/andreaalbarg/xipeweb/xipe.web/obj/Debug/net9.0/xipe.web.dll
+C:/Users/Usuario/source/repos/andreaalbarg/xipeweb/xipe.web/obj/Debug/net9.0/refint/xipe.web.dll
+C:/Users/Usuario/source/repos/andreaalbarg/xipeweb/xipe.web/obj/Debug/net9.0/xipe.web.pdb
+C:/Users/Usuario/source/repos/andreaalbarg/xipeweb/xipe.web/obj/Debug/net9.0/xipe.web.genruntimeconfig.cache
+C:/Users/Usuario/source/repos/andreaalbarg/xipeweb/xipe.web/obj/Debug/net9.0/ref/xipe.web.dll
+C:/Users/Usuario/source/repos/andreaalbarg/xipeweb/xipe.web/obj/Debug/net9.0/compressed/ao2k5a9hkv-tgyexamxyv.gz
+C:/Users/Usuario/source/repos/andreaalbarg/xipeweb/xipe.web/obj/Debug/net9.0/compressed/j7q6chf984-blzchzvcu5.gz
+C:/Users/Usuario/source/repos/andreaalbarg/xipeweb/xipe.web/obj/Debug/net9.0/compressed/vosbotgge5-blzchzvcu5.gz
+/Users/rta000725/Documents/Projects/Xipe Repositorio/xipeweb/xipe.web/bin/Debug/net9.0/appsettings.Development.json
+/Users/rta000725/Documents/Projects/Xipe Repositorio/xipeweb/xipe.web/bin/Debug/net9.0/appsettings.json
+/Users/rta000725/Documents/Projects/Xipe Repositorio/xipeweb/xipe.web/bin/Debug/net9.0/xipe.web.staticwebassets.runtime.json
+/Users/rta000725/Documents/Projects/Xipe Repositorio/xipeweb/xipe.web/bin/Debug/net9.0/xipe.web.staticwebassets.endpoints.json
+/Users/rta000725/Documents/Projects/Xipe Repositorio/xipeweb/xipe.web/bin/Debug/net9.0/xipe.web
+/Users/rta000725/Documents/Projects/Xipe Repositorio/xipeweb/xipe.web/bin/Debug/net9.0/xipe.web.deps.json
+/Users/rta000725/Documents/Projects/Xipe Repositorio/xipeweb/xipe.web/bin/Debug/net9.0/xipe.web.runtimeconfig.json
+/Users/rta000725/Documents/Projects/Xipe Repositorio/xipeweb/xipe.web/bin/Debug/net9.0/xipe.web.dll
+/Users/rta000725/Documents/Projects/Xipe Repositorio/xipeweb/xipe.web/bin/Debug/net9.0/xipe.web.pdb
+/Users/rta000725/Documents/Projects/Xipe Repositorio/xipeweb/xipe.web/obj/Debug/net9.0/rpswa.dswa.cache.json
+/Users/rta000725/Documents/Projects/Xipe Repositorio/xipeweb/xipe.web/obj/Debug/net9.0/xipe.web.GeneratedMSBuildEditorConfig.editorconfig
+/Users/rta000725/Documents/Projects/Xipe Repositorio/xipeweb/xipe.web/obj/Debug/net9.0/xipe.web.AssemblyInfoInputs.cache
+/Users/rta000725/Documents/Projects/Xipe Repositorio/xipeweb/xipe.web/obj/Debug/net9.0/xipe.web.AssemblyInfo.cs
+/Users/rta000725/Documents/Projects/Xipe Repositorio/xipeweb/xipe.web/obj/Debug/net9.0/xipe.web.csproj.CoreCompileInputs.cache
+/Users/rta000725/Documents/Projects/Xipe Repositorio/xipeweb/xipe.web/obj/Debug/net9.0/xipe.web.MvcApplicationPartsAssemblyInfo.cache
+/Users/rta000725/Documents/Projects/Xipe Repositorio/xipeweb/xipe.web/obj/Debug/net9.0/xipe.web.sourcelink.json
+/Users/rta000725/Documents/Projects/Xipe Repositorio/xipeweb/xipe.web/obj/Debug/net9.0/rjimswa.dswa.cache.json
+/Users/rta000725/Documents/Projects/Xipe Repositorio/xipeweb/xipe.web/obj/Debug/net9.0/rjsmrazor.dswa.cache.json
+/Users/rta000725/Documents/Projects/Xipe Repositorio/xipeweb/xipe.web/obj/Debug/net9.0/rjsmcshtml.dswa.cache.json
+/Users/rta000725/Documents/Projects/Xipe Repositorio/xipeweb/xipe.web/obj/Debug/net9.0/scopedcss/Components/Layout/MainLayout.razor.rz.scp.css
+/Users/rta000725/Documents/Projects/Xipe Repositorio/xipeweb/xipe.web/obj/Debug/net9.0/scopedcss/bundle/xipe.web.styles.css
+/Users/rta000725/Documents/Projects/Xipe Repositorio/xipeweb/xipe.web/obj/Debug/net9.0/scopedcss/projectbundle/xipe.web.bundle.scp.css
+/Users/rta000725/Documents/Projects/Xipe Repositorio/xipeweb/xipe.web/obj/Debug/net9.0/compressed/j7q6chf984-58ajfzvoau.gz
+/Users/rta000725/Documents/Projects/Xipe Repositorio/xipeweb/xipe.web/obj/Debug/net9.0/compressed/vosbotgge5-58ajfzvoau.gz
+/Users/rta000725/Documents/Projects/Xipe Repositorio/xipeweb/xipe.web/obj/Debug/net9.0/staticwebassets.build.json
+/Users/rta000725/Documents/Projects/Xipe Repositorio/xipeweb/xipe.web/obj/Debug/net9.0/staticwebassets.build.json.cache
+/Users/rta000725/Documents/Projects/Xipe Repositorio/xipeweb/xipe.web/obj/Debug/net9.0/staticwebassets.development.json
+/Users/rta000725/Documents/Projects/Xipe Repositorio/xipeweb/xipe.web/obj/Debug/net9.0/staticwebassets.build.endpoints.json
+/Users/rta000725/Documents/Projects/Xipe Repositorio/xipeweb/xipe.web/obj/Debug/net9.0/xipe.web.dll
+/Users/rta000725/Documents/Projects/Xipe Repositorio/xipeweb/xipe.web/obj/Debug/net9.0/refint/xipe.web.dll
+/Users/rta000725/Documents/Projects/Xipe Repositorio/xipeweb/xipe.web/obj/Debug/net9.0/xipe.web.pdb
+/Users/rta000725/Documents/Projects/Xipe Repositorio/xipeweb/xipe.web/obj/Debug/net9.0/xipe.web.genruntimeconfig.cache
+/Users/rta000725/Documents/Projects/Xipe Repositorio/xipeweb/xipe.web/obj/Debug/net9.0/ref/xipe.web.dll
+/Users/rta000725/Documents/Projects/Xipe Repositorio/xipeweb/xipe.web/obj/Debug/net9.0/compressed/ao2k5a9hkv-ayyxt7oceb.gz

@@ -1,4 +1,6 @@
 @page "/"
+@rendermode InteractiveServer
+@inject xipe.web.Services.EmailService EmailService
 
 <PageTitle>Xipe – Build software that moves at the speed of AI</PageTitle>
 
@@ -82,18 +84,18 @@
             <h2 class="services-title">What we do</h2>
         </div>
         <div class="services-grid">
-            <div class="service-card">
+            <a href="/software-development" class="service-card">
                 <span class="service-badge">Product Development</span>
                 <h3>Custom software, built through an AI driven delivery system.</h3>
                 <p>We design and build custom digital products that run your business. From early concept to production, we turn your vision into software delivered through an AI driven system built to grow with you.</p>
-                <a href="/software-development" class="link-arrow">See how we build products &rarr;</a>
-            </div>
-            <div class="service-card">
+                <span class="link-arrow">See how we build products &rarr;</span>
+            </a>
+            <a href="/consulting" class="service-card">
                 <span class="service-badge">AI &amp; Technology Consulting</span>
                 <h3>Rethink how your team builds with AI at the center.</h3>
                 <p>We help engineering leaders adopt AI augmented workflows, modernize their architecture, and establish the practices that let teams ship with confidence, not just speed.</p>
-                <a href="/consulting" class="link-arrow">Explore our approach &rarr;</a>
-            </div>
+                <span class="link-arrow">Explore our approach &rarr;</span>
+            </a>
         </div>
     </div>
 </section>
@@ -186,7 +188,7 @@
             </a>
             <a href="https://www.linkedin.com/in/martin-lachica-b6048b109/" target="_blank" rel="noopener" class="team-card">
                 <div class="team-photo-wrap">
-                    <img src="images/team-martin.JPG" alt="Martin Lachica" />
+                    <img src="images/team-martin.JPG" alt="Martin Lachica" style="object-position: center 20%;" />
                 </div>
                 <div class="team-name">Martin Lachica</div>
                 <div class="team-role">Engineering Lead</div>
@@ -230,36 +232,87 @@
         <span class="section-label">Get in Touch</span>
         <h2 class="contact-title">Let's build something great.</h2>
         <p class="contact-subtitle">Tell us about your project and we'll get back to you within 24 hours.</p>
-        <form class="contact-form">
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" id="name" placeholder="Your name" />
+
+        @if (formSent)
+        {
+            <div class="form-success">
+                <p>Thanks, @formName! We'll get back to you within 24 hours.</p>
+            </div>
+        }
+        else
+        {
+            <form class="contact-form" @onsubmit="HandleSubmit" @onsubmit:preventDefault>
+                @if (!string.IsNullOrEmpty(formError))
+                {
+                    <div class="form-error">@formError</div>
+                }
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" placeholder="Your name" @bind="formName" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" placeholder="you@company.com" @bind="formEmail" required />
+                    </div>
                 </div>
                 <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" placeholder="you@company.com" />
+                    <label for="company">Company</label>
+                    <input type="text" id="company" placeholder="Your company" @bind="formCompany" />
                 </div>
-            </div>
-            <div class="form-group">
-                <label for="company">Company</label>
-                <input type="text" id="company" placeholder="Your company" />
-            </div>
-            <div class="form-group">
-                <label for="service">What are you looking for?</label>
-                <select id="service">
-                    <option value="" disabled selected>Select a service</option>
-                    <option value="product">Product Development</option>
-                    <option value="consulting">AI &amp; Technology Consulting</option>
-                    <option value="staff">Staff Augmentation</option>
-                    <option value="other">Other</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="message">Message</label>
-                <textarea id="message" placeholder="Tell us about your project..."></textarea>
-            </div>
-            <button type="submit" class="btn-contact">Send Message &rarr;</button>
-        </form>
+                <div class="form-group">
+                    <label for="service">What are you looking for?</label>
+                    <select id="service" @bind="formService">
+                        <option value="" disabled selected>Select a service</option>
+                        <option value="Product Development">Product Development</option>
+                        <option value="AI &amp; Technology Consulting">AI &amp; Technology Consulting</option>
+                        <option value="Staff Augmentation">Staff Augmentation</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" placeholder="Tell us about your project..." @bind="formMessage"></textarea>
+                </div>
+                <button type="submit" class="btn-contact" disabled="@isSending">
+                    @(isSending ? "Sending..." : "Send Message →")
+                </button>
+            </form>
+        }
     </div>
 </section>
+
+@code {
+    string formName = "";
+    string formEmail = "";
+    string formCompany = "";
+    string formService = "";
+    string formMessage = "";
+    bool isSending = false;
+    bool formSent = false;
+    string formError = "";
+
+    async Task HandleSubmit()
+    {
+        if (string.IsNullOrWhiteSpace(formName) || string.IsNullOrWhiteSpace(formEmail))
+            return;
+
+        isSending = true;
+        formError = "";
+
+        try
+        {
+            await EmailService.SendContactFormAsync(formName, formEmail, formCompany, formService, formMessage);
+            formSent = true;
+        }
+        catch (Exception ex)
+        {
+            formError = "Something went wrong. Please try again or email us directly at hola@xipetechnology.com.";
+            _ = ex;
+        }
+        finally
+        {
+            isSending = false;
+        }
+    }
+}
